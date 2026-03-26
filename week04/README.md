@@ -4,7 +4,7 @@
 > **APP 開發課程** ｜ 第 4 週 ｜ 課堂實作練習  
 > **工具**：VS Code + Extension Pack for Java  
 > **時間**：約 40 分鐘  
-> **繳交**：完成後 push 到自己的 Fork，發 PR 繳交
+> **繳交**：完成後 push 到自己的 Fork 即可（已在 W03 發過 PR，push 後會自動更新）
 
 ---
 
@@ -211,7 +211,7 @@ public class SavingsAccount {
 
 ## 繳交方式
 
-完成後將三個檔案放在 `week04/` 資料夾內，push 到你的 Fork，發 PR 繳交：
+完成後將三個檔案放在 `week04/` 資料夾內，push 到你的 Fork：
 
 ```bash
 cd 你的Fork資料夾
@@ -220,7 +220,7 @@ mkdir -p week04
 git add week04/
 git commit -m "W04 課堂練習：封裝與繼承"
 git push origin main
-# 到 GitHub 網頁發 PR
+# 💡 不需要重新發 PR，W03 的 PR 會自動包含新的 commit
 ```
 
 ---
