@@ -1,4 +1,4 @@
-public class w031201{
+public class w031202{
     public static void main(String[]args){
         System.out.println("helloworld");
         //printTriangle();
