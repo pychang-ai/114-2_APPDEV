@@ -26,12 +26,12 @@ class MarineLife {
 class Shark extends MarineLife {
     Shark(String name, String habitat) { super(name, habitat); }
 
-    @Override
-    public String move() {
+    public @Override
+    String move() {
         return name + " 高速衝刺獵食";
     }
-    @Override
-    public String eat(){
+    public @Override
+    String eat(){
         return name + " 撕咬獵物";
     }
 }
@@ -42,12 +42,12 @@ class Shark extends MarineLife {
 class Turtle extends MarineLife {
     Turtle(String name, String habitat) { super(name, habitat); }
 
-    @Override
-    public String move() {
+    public @Override
+    String move() {
         return name + " 緩慢划動四肢";
     }
-    @Override
-    public String eat(){
+    public @Override
+    String eat(){
         return name + " 啃食海草";
     }
 }
