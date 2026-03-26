@@ -8,11 +8,11 @@ public class Q3_Turtle{
     }
 
     public void showDetail(){
-         System.out.println("This turtle's species is:" + species + "age: "+ age);
+         System.out.println("品種：" + species + "，年紀："+ age);
     }
 
     public static void main(String [] args){
-      Q3_Turtle myTurtle = new Q3_Turtle("Green Turtle", 50);
+      Q3_Turtle myTurtle = new Q3_Turtle("綠蠵龜", 50);
       myTurtle.showDetail();
 
     }
