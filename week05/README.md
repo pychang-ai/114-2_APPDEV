@@ -120,13 +120,3 @@ public static void main(String[] args) {
 
 ---
 
-## 評分標準
-
-| 項目 | 配分 |
-|------|:----:|
-| 父類別 Creature 設計合理，含 move()、eat()、describe() | 15% |
-| 4 個子類別正確覆寫 move() 和 eat()，使用 @Override | 30% |
-| feed() 方法多載 3 個版本 | 20% |
-| 正確使用 final 變數和 final 方法 | 15% |
-| main 中用陣列和迴圈展示多型 | 10% |
-| 程式碼可執行、有適當註解 | 10% |
