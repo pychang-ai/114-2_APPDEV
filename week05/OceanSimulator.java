@@ -1,4 +1,3 @@
-
 class MarineLife {
 
     protected String name;
