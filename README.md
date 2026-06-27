@@ -29,10 +29,16 @@
 課程後期將結合 AWS EC2 建立專屬後端服務，並於第 10 週起導入 AI 輔助開發流程。我們將學習 Prompt Engineering 技巧，掌握如何對 ChatGPT、Copilot 等 AI 工具下達有效指令，輔助程式碼撰寫、架構優化與除錯，核心原則為「先理解再使用」。
 
 ## 作業繳交方式
+
 本課程採用業界標準的 **Fork + Pull Request** 流程繳交作業：
-1. Fork 本 Repo 到你的 GitHub 帳號。
-2. 在你的 Fork 中建立每週資料夾（如 `week01/`）並完成作業。
-3. 發 Pull Request 回本 Repo 繳交。
+
+1. Fork 本 Repo 到你的 GitHub 帳號（學期初做一次）。
+2. 在你的 Fork 中建立每週資料夾（如 `week03/`）並完成作業。
+3. 第一次作業完成後發 Pull Request 回本 Repo。
+4. 之後每週完成作業只要 push 即可，PR 會自動包含新的 commit。
+
+> 💡 期中前只需要發一次 PR。每週 push 後教師就能在同一個 PR 中看到你的所有作業。
+> 期中後會重新發一次 PR，届時會另行通知。
 
 ## 課程進度表
 
