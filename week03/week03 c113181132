@@ -1,0 +1,44 @@
+q1
+public class Q1_Marine {
+    public static void main(String[] args) {
+        System.out.println("Hello, Ocean!");
+    }
+}
+q2
+public class Q2_Fish {
+    String name;
+    double weight;
+
+    public void displayInfo() {
+        System.out.println("這隻魚的名字是：" + name + "，重量是：" + weight + "公斤");
+    }
+
+    public static void main(String[] args) {
+        Q2_Fish myFish = new Q2_Fish();
+        
+        myFish.name = "黑鮪魚";
+        myFish.weight = 250.5;
+        
+        myFish.displayInfo();
+    }
+}
+q3
+public class Q3_Turtle {
+    String species;
+    int age;
+
+    public Q3_Turtle(String species, int age) {
+        this.species = species;
+        this.age = age;
+    }
+
+    public void showDetails() {
+        System.out.println("品種：" + species + "，年紀：" + age + "歲");
+    }
+
+    public static void main(String[] args) {
+        Q3_Turtle myTurtle = new Q3_Turtle("綠蠵龜", 50);
+        
+        myTurtle.showDetails();
+    }
+}
