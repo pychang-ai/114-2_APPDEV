@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="海洋生物小百科"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:layout_marginBottom="20dp">
+        <Button android:id="@+id/btnShark" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:text="鯊魚" />
+        <Button android:id="@+id/btnTurtle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:text="海龜" />
+        <Button android:id="@+id/btnDolphin" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:text="海豚" />
+        <Button android:id="@+id/btnOctopus" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:text="章魚" />
+    </GridLayout>
+
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="輸入關鍵字搜尋 (如: 鯊)" />
+
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="搜尋" />
+
+</LinearLayout>

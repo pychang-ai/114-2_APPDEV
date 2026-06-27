@@ -1,0 +1,583 @@
+PortReport 可運行程式碼整理
+================================
+專案設定：
+Project name：PortReport
+Package name：com.example.portreport
+Minimum SDK：API 24
+Language：Java
+
+請依照下面路徑，把每個檔案整份覆蓋。
+
+
+============================================================
+1. AndroidManifest.xml
+路徑：app/src/main/AndroidManifest.xml
+============================================================
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="港口通報 App"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PortReport">
+
+        <activity
+            android:name=".ReportActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+    </application>
+
+</manifest>
+
+
+============================================================
+2. activity_main.xml
+路徑：app/src/main/res/layout/activity_main.xml
+============================================================
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#F5F5F5">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="港口通報 App"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#222222"
+        android:gravity="center"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
+        android:id="@+id/tvSummary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="（尚無通報）"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#0D47A1"
+        android:gravity="center"
+        android:padding="12dp"
+        android:background="#FFFFFF"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/tvShip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="船名：（尚無通報）"
+        android:textSize="18sp"
+        android:padding="6dp" />
+
+    <TextView
+        android:id="@+id/tvPort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="港口：（尚無通報）"
+        android:textSize="18sp"
+        android:padding="6dp" />
+
+    <TextView
+        android:id="@+id/tvDirection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="動態：（尚無通報）"
+        android:textSize="18sp"
+        android:padding="6dp" />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="狀態：（尚無通報）"
+        android:textSize="18sp"
+        android:padding="6dp"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btnNewReport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="新增通報"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:id="@+id/btnClearLatest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="清除最新"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/tvHistoryTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="歷史通報"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <ListView
+        android:id="@+id/listViewReports"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFFFFF" />
+
+</LinearLayout>
+
+
+============================================================
+3. activity_report.xml
+路徑：app/src/main/res/layout/activity_report.xml
+============================================================
+
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="通報表單"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="船名"
+            android:textSize="18sp"
+            android:layout_marginBottom="6dp" />
+
+        <EditText
+            android:id="@+id/etShip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="請輸入船名，例如：萬海 601"
+            android:textSize="18sp"
+            android:inputType="text"
+            android:importantForAutofill="no"
+            android:singleLine="true"
+            android:layout_marginBottom="18dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="港口"
+            android:textSize="18sp"
+            android:layout_marginBottom="6dp" />
+
+        <EditText
+            android:id="@+id/etPort"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="請輸入港口，例如：高雄港"
+            android:textSize="18sp"
+            android:inputType="text"
+            android:importantForAutofill="no"
+            android:singleLine="true"
+            android:layout_marginBottom="18dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="通報類型"
+            android:textSize="18sp"
+            android:layout_marginBottom="6dp" />
+
+        <RadioGroup
+            android:id="@+id/rgDirection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp">
+
+            <RadioButton
+                android:id="@+id/rbInbound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="入港"
+                android:textSize="18sp"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/rbOutbound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="出港"
+                android:textSize="18sp"
+                android:layout_marginStart="24dp" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="送出通報"
+            android:textSize="18sp"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</ScrollView>
+
+
+============================================================
+4. ReportActivity.java
+路徑：app/src/main/java/com/example/portreport/ReportActivity.java
+============================================================
+
+package com.example.portreport;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+import androidx.activity.ComponentActivity;
+
+public class ReportActivity extends ComponentActivity {
+
+    private EditText etShip;
+    private EditText etPort;
+    private RadioGroup rgDirection;
+    private RadioButton rbInbound;
+    private RadioButton rbOutbound;
+    private Button btnSubmit;
+    private Button btnCancel;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_report);
+
+        etShip = findViewById(R.id.etShip);
+        etPort = findViewById(R.id.etPort);
+        rgDirection = findViewById(R.id.rgDirection);
+        rbInbound = findViewById(R.id.rbInbound);
+        rbOutbound = findViewById(R.id.rbOutbound);
+        btnSubmit = findViewById(R.id.btnSubmit);
+        btnCancel = findViewById(R.id.btnCancel);
+
+        Intent intent = getIntent();
+
+        String defaultPort = intent.getStringExtra(MainActivity.EXTRA_DEFAULT_PORT);
+        String oldShip = intent.getStringExtra(MainActivity.EXTRA_SHIP);
+        String oldPort = intent.getStringExtra(MainActivity.EXTRA_PORT);
+        String oldDirection = intent.getStringExtra(MainActivity.EXTRA_DIRECTION);
+
+        if (oldShip != null) {
+            etShip.setText(oldShip);
+        }
+
+        if (oldPort != null) {
+            etPort.setText(oldPort);
+        } else if (defaultPort != null) {
+            etPort.setText(defaultPort);
+        }
+
+        if ("出港".equals(oldDirection)) {
+            rbOutbound.setChecked(true);
+        } else {
+            rbInbound.setChecked(true);
+        }
+
+        btnSubmit.setOnClickListener(v -> submitReport());
+
+        btnCancel.setOnClickListener(v -> {
+            setResult(RESULT_CANCELED);
+            finish();
+        });
+    }
+
+    private void submitReport() {
+        String ship = etShip.getText().toString().trim();
+        String port = etPort.getText().toString().trim();
+
+        if (ship.isEmpty()) {
+            Toast.makeText(this, "請輸入船名", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (port.isEmpty()) {
+            Toast.makeText(this, "請輸入港口", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String direction;
+
+        int checkedId = rgDirection.getCheckedRadioButtonId();
+
+        if (checkedId == R.id.rbOutbound) {
+            direction = "出港";
+        } else {
+            direction = "入港";
+        }
+
+        String status = "通報成功";
+
+        Intent result = new Intent();
+        result.putExtra(MainActivity.EXTRA_SHIP, ship);
+        result.putExtra(MainActivity.EXTRA_PORT, port);
+        result.putExtra(MainActivity.EXTRA_DIRECTION, direction);
+        result.putExtra(MainActivity.EXTRA_STATUS, status);
+
+        setResult(RESULT_OK, result);
+        finish();
+    }
+}
+
+
+============================================================
+5. MainActivity.java
+路徑：app/src/main/java/com/example/portreport/MainActivity.java
+============================================================
+
+package com.example.portreport;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.activity.ComponentActivity;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+
+import java.util.ArrayList;
+
+public class MainActivity extends ComponentActivity {
+
+    public static final String EXTRA_SHIP = "ship";
+    public static final String EXTRA_PORT = "port";
+    public static final String EXTRA_DIRECTION = "direction";
+    public static final String EXTRA_STATUS = "status";
+    public static final String EXTRA_DEFAULT_PORT = "default_port";
+
+    private TextView tvSummary;
+    private TextView tvShip;
+    private TextView tvPort;
+    private TextView tvDirection;
+    private TextView tvStatus;
+    private Button btnNewReport;
+    private Button btnClearLatest;
+    private ListView listViewReports;
+
+    private ActivityResultLauncher<Intent> reportLauncher;
+
+    private final ArrayList<Report> reportList = new ArrayList<>();
+    private final ArrayList<String> reportTextList = new ArrayList<>();
+    private ArrayAdapter<String> adapter;
+
+    private String defaultPort = "高雄港";
+    private int editingIndex = -1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        tvSummary = findViewById(R.id.tvSummary);
+        tvShip = findViewById(R.id.tvShip);
+        tvPort = findViewById(R.id.tvPort);
+        tvDirection = findViewById(R.id.tvDirection);
+        tvStatus = findViewById(R.id.tvStatus);
+        btnNewReport = findViewById(R.id.btnNewReport);
+        btnClearLatest = findViewById(R.id.btnClearLatest);
+        listViewReports = findViewById(R.id.listViewReports);
+
+        adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_1,
+                reportTextList
+        );
+
+        listViewReports.setAdapter(adapter);
+
+        reportLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        Intent data = result.getData();
+
+                        String ship = data.getStringExtra(EXTRA_SHIP);
+                        String port = data.getStringExtra(EXTRA_PORT);
+                        String direction = data.getStringExtra(EXTRA_DIRECTION);
+                        String status = data.getStringExtra(EXTRA_STATUS);
+
+                        if (ship == null) ship = "";
+                        if (port == null) port = "";
+                        if (direction == null) direction = "";
+                        if (status == null) status = "通報成功";
+
+                        Report report = new Report(ship, port, direction, status);
+
+                        if (editingIndex >= 0 && editingIndex < reportList.size()) {
+                            reportList.set(editingIndex, report);
+                            Toast.makeText(this, "通報已修改", Toast.LENGTH_SHORT).show();
+                        } else {
+                            reportList.add(report);
+                            Toast.makeText(this, "通報成功", Toast.LENGTH_SHORT).show();
+                        }
+
+                        defaultPort = port;
+                        updateLatestReport(report);
+                        refreshHistoryList();
+
+                    } else if (result.getResultCode() == RESULT_CANCELED) {
+                        Toast.makeText(this, "通報已取消", Toast.LENGTH_SHORT).show();
+                    }
+
+                    editingIndex = -1;
+                }
+        );
+
+        btnNewReport.setOnClickListener(v -> {
+            editingIndex = -1;
+
+            Intent intent = new Intent(MainActivity.this, ReportActivity.class);
+            intent.putExtra(EXTRA_DEFAULT_PORT, defaultPort);
+
+            reportLauncher.launch(intent);
+        });
+
+        btnClearLatest.setOnClickListener(v -> {
+            clearLatestReport();
+            Toast.makeText(this, "已清除", Toast.LENGTH_SHORT).show();
+        });
+
+        listViewReports.setOnItemClickListener((parent, view, position, id) -> {
+            if (position < 0 || position >= reportList.size()) {
+                return;
+            }
+
+            editingIndex = position;
+            Report selectedReport = reportList.get(position);
+
+            Intent intent = new Intent(MainActivity.this, ReportActivity.class);
+            intent.putExtra(EXTRA_SHIP, selectedReport.ship);
+            intent.putExtra(EXTRA_PORT, selectedReport.port);
+            intent.putExtra(EXTRA_DIRECTION, selectedReport.direction);
+            intent.putExtra(EXTRA_DEFAULT_PORT, selectedReport.port);
+
+            reportLauncher.launch(intent);
+        });
+
+        clearLatestReport();
+    }
+
+    private void updateLatestReport(Report report) {
+        tvSummary.setText(report.ship + " " + report.direction + " " + report.status);
+        tvShip.setText("船名：" + report.ship);
+        tvPort.setText("港口：" + report.port);
+        tvDirection.setText("動態：" + report.direction);
+        tvStatus.setText("狀態：" + report.status);
+    }
+
+    private void clearLatestReport() {
+        tvSummary.setText("（尚無通報）");
+        tvShip.setText("船名：（尚無通報）");
+        tvPort.setText("港口：（尚無通報）");
+        tvDirection.setText("動態：（尚無通報）");
+        tvStatus.setText("狀態：（尚無通報）");
+    }
+
+    private void refreshHistoryList() {
+        reportTextList.clear();
+
+        for (Report report : reportList) {
+            String text = "[" + report.direction + "] " + report.ship + " @ " + report.port;
+            reportTextList.add(text);
+        }
+
+        adapter.notifyDataSetChanged();
+    }
+
+    private static class Report {
+        String ship;
+        String port;
+        String direction;
+        String status;
+
+        Report(String ship, String port, String direction, String status) {
+            this.ship = ship;
+            this.port = port;
+            this.direction = direction;
+            this.status = status;
+        }
+    }
+}
+
+
+============================================================
+6. 如果 ComponentActivity 報紅
+============================================================
+
+打開 app/build.gradle，在 dependencies 加：
+
+implementation 'androidx.activity:activity:1.9.0'
+
+如果是 build.gradle.kts，則加：
+
+implementation("androidx.activity:activity:1.9.0")
+
+
+============================================================
+7. 最後操作
+============================================================
+
+改完之後執行：
+
+File > Sync Project with Gradle Files
+Build > Clean Project
+Build > Rebuild Project
+
+黃色警告例如 Hardcoded string、Missing autofillHints 可以先不用管，不會影響作業執行。

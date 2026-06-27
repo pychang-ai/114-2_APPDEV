@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="顧客姓名：" android:textSize="16sp" />
+        <EditText
+            android:id="@+id/edName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="請輸入姓名" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="紀念品種類：" android:layout_marginTop="10dp" android:textSize="16sp" />
+        <RadioGroup android:id="@+id/rgProduct" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <RadioButton android:id="@+id/rbMug" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="馬克杯" android:checked="true"/>
+            <RadioButton android:id="@+id/rbTshirt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="T 恤" />
+            <RadioButton android:id="@+id/rbPoster" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="海報" />
+        </RadioGroup>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="海洋生物圖案：" android:layout_marginTop="10dp" android:textSize="16sp" />
+        <RadioGroup android:id="@+id/rgAnimal" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <RadioButton android:id="@+id/rbBigShark" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="鋼牙鯊" android:checked="true"/>
+            <RadioButton android:id="@+id/rbShark" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="NIKE鯊" />
+            <RadioButton android:id="@+id/rbMega" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="長腳海星" />
+            <RadioButton android:id="@+id/rbCatfish" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="貓魚" />
+            <RadioButton android:id="@+id/rbTurtle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="巴拉龜" />
+        </RadioGroup>
+
+        <ImageView
+            android:id="@+id/imgPreview"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:src="@drawable/bigshark" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="加購選項：" android:layout_marginTop="10dp" android:textSize="16sp" />
+        <CheckBox android:id="@+id/chkGift" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="禮盒包裝" />
+        <CheckBox android:id="@+id/chkBag" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="環保袋" />
+        <CheckBox android:id="@+id/chkCard" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="賀卡" />
+
+        <TextView
+            android:id="@+id/tvOrderSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="15dp"
+            android:background="#F0F0F0"
+            android:text="訂購單預覽"
+            android:textSize="16sp"
+            android:textColor="#333333" />
+    </LinearLayout>
+</ScrollView>
