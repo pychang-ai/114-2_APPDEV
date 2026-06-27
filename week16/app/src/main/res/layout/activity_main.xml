@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    藍海客輪航程與席位預訂系統 - activity_main.xml
+    國立高雄科技大學 (NKUST) 海事軟體分析專案 - Android Layout
+    Styling Vibe: Futuristic Dark/Blue Ocean Slate Card Interface
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B132B"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Top Header Layout with Spinning Compass Indicator & Lang Switcher -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/ivCompassLogo"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:src="@android:drawable/ic_menu_compass"
+                android:contentDescription="Compass Logo" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/ivCompassLogo"
+                android:layout_toStartOf="@+id/btnLangToggle"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvAppTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="藍海航線 APP"
+                    android:textColor="#38BDF8"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvAppSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="台灣客輪航程與席位預訂系統"
+                    android:textColor="#94A3B8"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnLangToggle"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:backgroundTint="#1E293B"
+                android:text="English"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp" />
+        </RelativeLayout>
+
+        <!-- Port Segment Quick Switcher Tabs -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:layout_marginBottom="14dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnTabTaitung"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:text="台東"
+                    android:textSize="12sp"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#00F2FE"
+                    android:layout_marginEnd="6dp" />
+
+                <Button
+                    android:id="@+id/btnTabPingtung"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:text="屏東"
+                    android:textSize="12sp"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#1E293B"
+                    android:layout_marginEnd="6dp" />
+
+                <Button
+                    android:id="@+id/btnTabKaohsiung"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:text="高雄"
+                    android:textSize="12sp"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#1E293B"
+                    android:layout_marginEnd="6dp" />
+
+                <Button
+                    android:id="@+id/btnTabChiayi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:text="嘉義"
+                    android:textSize="12sp"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#1E293B" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- Dynamic Dropdowns with Swapper Button Selection (Bento Card) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1C2541"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginBottom="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📍 航線起訖港選定 / Routes"
+                android:textColor="#38BDF8"
+                android:textSize="13dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp" />
+
+            <Spinner
+                android:id="@+id/spinnerDeparture"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="#1E293B"
+                android:padding="8dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#3A506B"
+                    android:layout_centerInParent="true"/>
+
+                <ImageButton
+                    android:id="@+id/btnSwapPorts"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    android:background="@android:drawable/btn_default_small"
+                    android:backgroundTint="#1E293B"
+                    android:src="@android:drawable/ic_menu_revert"
+                    android:contentDescription="Swap Fields" />
+            </RelativeLayout>
+
+            <Spinner
+                android:id="@+id/spinnerDestination"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="#1E293B"
+                android:padding="8dp" />
+        </LinearLayout>
+
+        <!-- Marine Observation Weather Board -->
+        <LinearLayout
+            android:id="@+id/cardMarineBg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1C2541"
+            android:orientation="vertical"
+            android:padding="14dp"
+            android:layout_marginBottom="14dp">
+
+            <TextView
+                android:id="@+id/tvMarineTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⛈️ 今日智慧海象觀測"
+                android:textColor="#38BDF8"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:rowCount="1"
+                android:alignmentMode="alignBounds"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:id="@+id/tvWaveHeight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="浪高：1.2公尺"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/tvWindSpeed"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="風速：12節"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/tvVisibility"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="能見度：10公里"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp" />
+            </GridLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="6dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="航安星級："
+                    android:textColor="#94A3B8"
+                    android:textSize="11sp"/>
+
+                <TextView
+                    android:id="@+id/tvSafetyStars"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="★★★★☆"
+                    android:textColor="#EAB308"
+                    android:textSize="11sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvSafetyNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="海象平靜，適航航次順暢。"
+                android:textColor="#F43F5E"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- Seat Selector Board (Interactive Matrix Simulation) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1C2541"
+            android:orientation="vertical"
+            android:padding="14dp"
+            android:layout_marginBottom="14dp">
+
+            <TextView
+                android:id="@+id/tvSeatMapTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="💺 智慧客艙客機 seat 列席對號劃座"
+                android:textColor="#38BDF8"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="4"
+                android:rowCount="4"
+                android:alignmentMode="alignBounds"
+                android:useDefaultMargins="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp">
+
+                <!-- Row 1 -->
+                <Button android:id="@+id/seat_0" android:layout_width="60dp" android:layout_height="40dp" android:text="1A" android:backgroundTint="#475569" android:textSize="10sp"/>
+                <Button android:id="@+id/seat_1" android:layout_width="60dp" android:layout_height="40dp" android:text="1B" android:backgroundTint="#475569" android:textSize="10sp"/>
+                <Button android:id="@+id/seat_2" android:layout_width="60dp" android:layout_height="40dp" android:text="1C" android:backgroundTint="#475569" android:textSize="10sp"/>
+                <Button android:id="@+id/seat_3" android:layout_width="60dp" android:layout_height="40dp" android:text="1D" android:backgroundTint="#475569" android:textSize="10sp"/>
+
+                <!-- Row 2 -->
+                <Button android:id="@+id/seat_4" android:layout_width="60dp" android:layout_height="40dp" android:text="2A" android:backgroundTint="#475569" android:textSize="10sp"/>
+                <Button android:id="@+id/seat_5" android:layout_width="60dp" android:layout_height="40dp" android:text="2B" android:backgroundTint="#475569" android:textSize="10sp"/>
+                <Button android:id="@+id/seat_6" android:layout_width="60dp" android:layout_height="40dp" android:text="2C" android:backgroundTint="#475569" android:textSize="10sp"/>
+                <Button android:id="@+id/seat_7" android:layout_width="60dp" android:layout_height="40dp" android:text="2D" android:backgroundTint="#34D399" android:textSize="10sp"/> <!-- Occupied -->
+
+                <!-- Row 3 -->
+                <Button android:id="@+id/seat_8" android:layout_width="60dp" android:layout_height="40dp" android:text="3A" android:backgroundTint="#475569" android:textSize="10sp"/>
+                <Button android:id="@+id/seat_9" android:layout_width="60dp" android:layout_height="40dp" android:text="3B" android:backgroundTint="#475569" android:textSize="10sp"/>
+                <Button android:id="@+id/seat_10" android:layout_width="60dp" android:layout_height="40dp" android:text="3C" android:backgroundTint="#475569" android:textSize="10sp"/>
+                <Button android:id="@+id/seat_11" android:layout_width="60dp" android:layout_height="40dp" android:text="3D" android:backgroundTint="#475569" android:textSize="10sp"/>
+
+                <!-- Row 4 -->
+                <Button android:id="@+id/seat_12" android:layout_width="60dp" android:layout_height="40dp" android:text="4A" android:backgroundTint="#475569" android:textSize="10sp"/>
+                <Button android:id="@+id/seat_13" android:layout_width="60dp" android:layout_height="40dp" android:text="4B" android:backgroundTint="#475569" android:textSize="10sp"/>
+                <Button android:id="@+id/seat_14" android:layout_width="60dp" android:layout_height="40dp" android:text="4C" android:backgroundTint="#475569" android:textSize="10sp"/>
+                <Button android:id="@+id/seat_15" android:layout_width="60dp" android:layout_height="40dp" android:text="4D" android:backgroundTint="#475569" android:textSize="10sp"/>
+            </GridLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvSelectedSeatLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="已選定客艙座位："
+                    android:textColor="#94A3B8"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/tvSelectedSeatCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="未選擇 / None"
+                    android:textColor="#10B981"
+                    android:textStyle="bold"
+                    android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Real Name secure reservation details -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1C2541"
+            android:orientation="vertical"
+            android:padding="14dp"
+            android:layout_marginBottom="14dp">
+
+            <TextView
+                android:id="@+id/tvPassengerTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🎫 實名安檢證件核銷申報專欄"
+                android:textColor="#38BDF8"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp" />
+
+            <EditText
+                android:id="@+id/etPassengerName"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="#1E293B"
+                android:hint="請輸入乘船乘客身分證件相同姓名"
+                android:textColorHint="#475569"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textSize="11sp"
+                android:inputType="textPersonName"
+                android:layout_marginBottom="8dp"/>
+
+            <CheckBox
+                android:id="@+id/cbConcessionHalf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="符合優待票資格（學生、敬老、身障半價折抵）"
+                android:textColor="#94A3B8"
+                android:textSize="10sp"
+                android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:id="@+id/tvTicketPriceLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="即時票價試算：NT$ 0"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:layout_marginBottom="12dp"/>
+
+            <Button
+                android:id="@+id/btnBookTicket"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:backgroundTint="#10B981"
+                android:text="確認劃座位置與核酸認證實名申報預訂票務"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- Server-side Gemini consultation -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1C2541"
+            android:orientation="vertical"
+            android:padding="14dp"
+            android:layout_marginBottom="14dp">
+
+            <Button
+                android:id="@+id/btnAskAI"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:backgroundTint="#F59E0B"
+                android:text="✨ 點擊詢問 AI 今日航行備忘 &amp; 行程"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="11sp" />
+
+            <ProgressBar
+                android:id="@+id/progressAI"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/tvAIResponse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0F172A"
+                android:padding="12dp"
+                android:layout_marginTop="10dp"
+                android:text="點擊上方按鈕，即時連線 Gemini 航安專家諮詢..."
+                android:textColor="#94A3B8"
+                android:textSize="11sp"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+        <!-- Electronic QR Ticket Display Layout (Initially GONE, visible upon reservation success) -->
+        <LinearLayout
+            android:id="@+id/TicketLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#10B981"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🎟️ 電子電子乘船特考航行證"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:id="@+id/tvTicketCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BOF-8898218"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:layout_marginBottom="6dp" />
+
+            <TextView
+                android:id="@+id/tvTicketRoute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="航線：台東 ↔ 綠島"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/tvTicketSeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="座位：2B"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/tvTicketPassenger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="實名乘客：陳王二"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/tvTicketPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NT$ 280 (優待票)"
+                android:textColor="#EAB308"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- Simulated QR Code image -->
+            <ImageView
+                android:id="@+id/ivQrPlaceholder"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:background="#FFFFFF"
+                android:padding="10dp"
+                android:src="@android:drawable/ic_dialog_info"
+                android:contentDescription="Ticket QR Code" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center"
+                android:text="※ 請提早 30 分鐘抵達碼頭海巡安檢口刷碼乘船"
+                android:textColor="#F3F4F6"
+                android:textSize="9dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

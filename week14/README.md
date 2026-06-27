@@ -10,3 +10,11 @@ to
 ```
 
 ## Error02
+change
+```
+if (requestCode == RESULT_OK) {
+```
+to
+```
+if (requestCode == SET_RESULT && resultCode == RESULT_OK) {
+```

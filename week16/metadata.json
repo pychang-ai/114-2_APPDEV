@@ -1,0 +1,6 @@
+{
+  "name": "藍海航線",
+  "description": "台灣客輪航程與智慧席位預訂系統，整合即時海象觀測與 Gemini 航旅諮詢助理。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -7,14 +7,11 @@ public class Q3_Turtle{
         this.age = age;
     }
 
-    public void showDetail(){
-         System.out.println("This turtle's species is:" + species + "age: "+ age);
+    public void showDetails(){
+        System.out.println("This turtle's species is :" + species + " age:" + age);
     }
-
     public static void main(String [] args){
-      Q3_Turtle myTurtle = new Q3_Turtle("Green Turtle", 50);
-      myTurtle.showDetail();
-
+        Q3_Turtle myTurtle = new Q3_Turtle("Green Turtle",50);
+        myTurtle.showDetails();
     }
-
 }
