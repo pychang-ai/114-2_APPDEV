@@ -1,3 +1,4 @@
+王智弘
 # Week14 exercise
 ## Error01
 change
@@ -10,3 +11,11 @@ to
 ```
 
 ## Error02
+  change
+  ```
+  if (resultCode == RESULT_OK) {
+  ```
+  to
+  ```
+  if (requestCode == RESULT_OK) {
+  ```
