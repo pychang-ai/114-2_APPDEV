@@ -10,3 +10,11 @@ to
 ```
 
 ## Error02
+change
+```
+requestCode == RESULT_OK;
+```
+to
+```
+resultCode == RESULT_OK;
+```
