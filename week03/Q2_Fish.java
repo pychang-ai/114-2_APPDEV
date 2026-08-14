@@ -1,18 +1,25 @@
-public class Q2_fish{
+public class Q2_Fish {
+    // i. 宣告兩個屬性 (狀態)
     String name;
     double weight;
 
-    public void displayinf(){
-         System.out.println("This fish's name is:" + name + "Weight: "+ wieght +"KG");
+    // ii. 撰寫 displayInfo() 方法 (行為)
+    public void displayInfo() {
+        System.out.println("這隻魚的名字是：" + name + "，重量是：" + weight + "公斤");
     }
 
-    public static void main(String [] args){
-        Q2_fish myfish = new Q2_fish();
-        myfish.name = "Black fish";
-        myfish.weight =250.5;
+    // iii. 主程式入口
+    public static void main(String[] args) {
+        // 產生一個 Q2_Fish 的物件 (實例化)
+        Q2_Fish myFish = new Q2_Fish();
 
-        myfish.displayinf();
+        // 將這隻魚的屬性設值
+        myFish.name = "黑鮪魚";
+        myFish.weight = 250.5;
 
+        // 呼叫這隻魚的方法
+        myFish.displayInfo();
     }
+}
 
 }
