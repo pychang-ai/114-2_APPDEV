@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新增通報"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp" />
+
+        <!-- 船名 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="船名"
+            android:textSize="14sp"
+            android:textColor="#666666" />
+        <EditText
+            android:id="@+id/etShipName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="例：萬海 601"
+            android:inputType="text"
+            android:layout_marginBottom="16dp" />
+
+        <!-- 港口 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="港口"
+            android:textSize="14sp"
+            android:textColor="#666666" />
+        <EditText
+            android:id="@+id/etPort"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="例：高雄港"
+            android:inputType="text"
+            android:layout_marginBottom="16dp" />
+
+        <!-- 狀態：入港 / 出港 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="狀態"
+            android:textSize="14sp"
+            android:textColor="#666666" />
+        <RadioGroup
+            android:id="@+id/rgStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+            <RadioButton
+                android:id="@+id/rbEnter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="入港"
+                android:checked="true"
+                android:layout_marginEnd="24dp" />
+            <RadioButton
+                android:id="@+id/rbExit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="出港" />
+        </RadioGroup>
+
+        <!-- 備註 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="備註（選填）"
+            android:textSize="14sp"
+            android:textColor="#666666" />
+        <EditText
+            android:id="@+id/etNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="例：攜帶危險品、需吊桿服務..."
+            android:inputType="textMultiLine"
+            android:lines="3"
+            android:gravity="top"
+            android:layout_marginBottom="24dp" />
+
+        <!-- 按鈕列 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="取消"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="#6C757D" />
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="送出通報"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="#198754" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

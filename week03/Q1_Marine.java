@@ -1,5 +1,5 @@
-public class helloworld {
+public class Q1_Marine {
     public static void main(String [] args){
-        System.out.println("Hello Ocean");
+        System.out.println("Hello Ocean!");
     }
 }

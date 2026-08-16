@@ -1,0 +1,6 @@
+{
+  "name": "海洋生物小百科",
+  "description": "一個專為海洋愛好者設計的精美海洋生物圖鑑小百科！支援完整的離線瀏覽、英文與繁體中文的多語言即時切換、關鍵字智慧搜尋、分類篩選，並內建好玩的「海洋知識挑戰」趣味答題遊戲，讓您在探索中學習！",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
